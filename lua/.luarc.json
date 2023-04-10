@@ -1,0 +1,8 @@
+{
+    "workspace.library": [
+        "/home/ston/.local/share/nvim/site/pack/packer/start/neodev.nvim/types/stable",
+        "/usr/share/nvim/runtime/lua",
+        "/home/ston/.local/share/fcitx5/rime/lua",
+        "${3rd}/luv/library"
+    ]
+}

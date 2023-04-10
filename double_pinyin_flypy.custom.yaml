@@ -1,0 +1,50 @@
+# encoding: utf-8
+
+patch:
+  "switches/@0/reset": 1
+  "switches/@1/reset": 0
+  "switches/@2/reset": 1
+
+  translator/dictionary: luna_pinyin.extended
+  translator/prism: double_pinyin_flypy
+  translator/preedit_format: {}
+  translator/enable_completion: true
+
+  switches/@next:
+    name: emoji_suggestion
+    reset: 1
+    states: [ "F", "T" ]
+  'engine/filters/@before 0':
+     simplifier@emoji_suggestion
+
+  # https://github.com/rime/rime-emoji/blob/master/emoji_suggestion.yaml
+  emoji_suggestion:
+    opencc_config: emoji.json
+    option_name: emoji_suggestion
+    tips: none
+    inherit_comment: false
+
+  # https://github.com/BlindingDark/rime-lua-select-character
+  __include: lua_select_character:/patch
+  key_binder/select_first_character: 'minus'
+  key_binder/select_last_character: 'equal'
+
+  # https://github.com/zecy/flypy_double/
+  schema/dependencies/+:
+    - chaizi
+  reverse_lookup/dictionary: chaizi_flypy
+  reverse_lookup/enable_completion: true
+  reverse_lookup/tips: 〔拆字〕
+  reverse_lookup/preedit_format:
+    - xform/([nljqxy])v/$1ü/
+  reverse_lookupcomment_format:
+    - xform/([nljqxy])v/$1ü/
+
+  # https://github.com/BlindingDark/rime-easy-en
+  __include: easy_en:/patch
+  easy_en/enable_sentence: false
+
+  # https://github.com/hchunhui/librime-lua
+  # https://github.com/LufsX/rime/blob/master/lufs_flypy.schema.yaml
+  'engine/translators/@after 1':
+    lua_translator@date_translator
