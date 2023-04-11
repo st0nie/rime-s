@@ -29,7 +29,7 @@ patch:
   key_binder/select_first_character: 'minus'
   key_binder/select_last_character: 'equal'
 
-  # https://github.com/zecy/flypy_double/
+  # https://github.com/functoreality/rime-flypy-zrmfast/
   schema/dependencies/+:
     - chaizi
   reverse_lookup/dictionary: chaizi_flypy
