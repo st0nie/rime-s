@@ -1,0 +1,13 @@
+# Rime dictionary
+# encoding: utf-8
+# from rime-ice
+# 挂载英文输入方案的词库
+#
+
+---
+name: melt_eng
+version: "2023-02-26"
+import_tables:
+  - en_dicts/en_ext
+  - en_dicts/en
+...
