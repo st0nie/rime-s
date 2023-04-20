@@ -12,16 +12,16 @@ patch:
   translator/enable_completion: true
 
   switches/@next:
-    name: emoji_suggestion
+    name: emoji
     reset: 1
     states: [ "F", "T" ]
   'engine/filters/@before 0':
-     simplifier@emoji_suggestion
+     simplifier@emoji
 
-  # https://github.com/rime/rime-emoji/blob/master/emoji_suggestion.yaml
-  emoji_suggestion:
+  # https://github.com/rime/rime-emoji/blob/master/emoji.yaml
+  emoji:
     opencc_config: emoji.json
-    option_name: emoji_suggestion
+    option_name: emoji
     tips: none
     inherit_comment: false
 
@@ -59,3 +59,15 @@ patch:
       - xform/.*//
   'engine/filters/@after 0':
     lua_filters@reduce_english_filter
+
+  traditionalize:
+    option_name: traditionalization
+    opencc_config: t2s.json
+    tips: none
+    excluded_types: [ reverse_lookup ]
+  switches/@2:
+    name: traditionalization
+    reset: 1
+    states: [ "繁", "简" ]
+  'engine/filters/@0':
+     'simplifier@traditionalize'

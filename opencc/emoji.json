@@ -4,19 +4,24 @@
     "type": "mmseg",
     "dict": {
       "type": "text",
-      "file": "emoji_word.txt"
+      "file": "emoji.txt"
     }
   },
-  "conversion_chain": [{
-    "dict": {
-      "type": "group",
-      "dicts": [{
-        "type": "text",
-        "file": "emoji_word.txt"
-      }, {
-        "type": "text",
-        "file": "emoji_category.txt"
-      }]
+  "conversion_chain": [
+    {
+      "dict": {
+        "type": "group",
+        "dicts": [
+          {
+            "type": "text",
+            "file": "emoji.txt"
+          },
+          {
+            "type": "text",
+            "file": "others.txt"
+          }
+        ]
+      }
     }
-  }]
+  ]
 }
