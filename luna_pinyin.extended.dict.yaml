@@ -7,3 +7,5 @@ import_tables:
   - luna_pinyin
   - cn_dicts/zhwiki
   - cn_dicts/moegirl
+  - cn_dicts/sogou
+  - cn_dicts/tencent
