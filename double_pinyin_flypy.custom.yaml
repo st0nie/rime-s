@@ -71,3 +71,10 @@ patch:
     states: [ "繁", "简" ]
   'engine/filters/@0':
      'simplifier@traditionalize'
+
+  # 八股文
+  grammar:
+    language: zh-hant-t-essay-bgw
+  translator/contextual_suggestions: true
+  translator/max_homophones: 7
+  translator/max_homographs: 7
