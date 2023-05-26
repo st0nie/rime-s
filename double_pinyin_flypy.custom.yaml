@@ -84,7 +84,7 @@ patch:
 
   # 自定义符号
   punctuator:
-    import_preset: symbols
+    import_preset: default
     full_shape:
       "/" : "、"
       "\\" : "、"
