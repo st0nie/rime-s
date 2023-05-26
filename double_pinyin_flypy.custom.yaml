@@ -36,12 +36,15 @@ patch:
     - melt_eng
 
   reverse_lookup/dictionary: chaizi_flypy
+  reverse_lookup/prefix: "U"
   reverse_lookup/enable_completion: true
   reverse_lookup/tips: 〔拆字〕
   reverse_lookup/preedit_format:
     - xform/([nljqxy])v/$1ü/
   reverse_lookupcomment_format:
     - xform/([nljqxy])v/$1ü/
+  recognizer/patterns/+:
+      reverse_lookup: "U[a-z]*?$"
 
   # https://github.com/hchunhui/librime-lua
   # https://github.com/LufsX/rime/blob/master/lufs_flypy.schema.yaml

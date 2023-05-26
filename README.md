@@ -12,8 +12,9 @@ git clone https://github.com/st0nie/rime-s ~/.local/share/fcitx5/rime
 
 # 特性
 
-- `｀`拆字输入，替代了笔划输入
+- `U`拆字输入，替代了笔划输入
 - lua插件，日期和时间输入支持
+- 符号可以直接上屏
 - emoji
 - easy_en 提供的英文输入支持
 - `-` `=` 以词定字
