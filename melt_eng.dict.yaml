@@ -10,4 +10,7 @@ version: "2023-02-26"
 import_tables:
   - en_dicts/en_ext
   - en_dicts/en
+  
+  # 中英混输
+  - en_dicts/cn_en_double_pinyin_flypy
 ...
