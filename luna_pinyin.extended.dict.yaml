@@ -5,6 +5,9 @@ sort: by_weight
 use_preset_vocabulary: true
 import_tables:
   - luna_pinyin
+  - cn_dicts/base
+  - cn_dicts/ext
+  - cn_dicts/others
   - cn_dicts/zhwiki
   - cn_dicts/moegirl
   - cn_dicts/sogou
