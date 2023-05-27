@@ -130,7 +130,7 @@ patch:
       - "xform/ui$/V/"
       - "xform/in$/B/"
       - "xlit/QWRTYUIOPSDFGHJKLZXCVBNM/qwrtyuiopsdfghjklzxcvbnm/"
-      - "abbrev/^(.).+$/$1/" # 首字母简拼
+      # - "abbrev/^(.).+$/$1/" # 首字母简拼
     alphabet: zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA
     delimiter: " '"
       
@@ -145,7 +145,7 @@ patch:
   punctuator:
     import_preset: default
     full_shape:
-      "/" : "、"
+      "/" : "／"
       "\\" : "、"
       "[" : "「"
       "]" : "」"
@@ -158,7 +158,7 @@ patch:
       "$" : "￥"
       "%" : "％"
     half_shape:
-      "/" : "、"
+      "/" : "/"
       "\\" : "、"
       "[" : "「"
       "]" : "」"
