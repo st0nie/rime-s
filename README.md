@@ -18,3 +18,7 @@ git clone https://github.com/st0nie/rime-s ~/.local/share/fcitx5/rime
 - emoji
 - [rime-melt](https://github.com/tumuyan/rime-melt) 提供的英文输入支持
 - `-` `=` 以词定字
+
+# TODO
+
+  * [ ] 迁移到简体拼音输入法，并且让词库也使用简体拼音
