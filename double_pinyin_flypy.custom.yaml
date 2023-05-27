@@ -14,9 +14,7 @@ patch:
   switches/@next:
     name: emoji
     reset: 1
-    states: [ "F", "T" ]
-  'engine/filters/@before 0':
-     simplifier@emoji
+    states: [ "💀", "😄" ]
 
   # https://github.com/rime/rime-emoji/blob/master/emoji.yaml
   emoji:
@@ -26,7 +24,6 @@ patch:
     inherit_comment: false
 
   # https://github.com/BlindingDark/rime-lua-select-character
-  __include: lua_select_character:/patch
   key_binder/select_first_character: 'minus'
   key_binder/select_last_character: 'equal'
 
@@ -38,21 +35,15 @@ patch:
   reverse_lookup/dictionary: chaizi_flypy
   reverse_lookup/prefix: "U"
   reverse_lookup/enable_completion: true
-  reverse_lookup/tips: 〔拆字〕
+  reverse_lookup/tips: []
   reverse_lookup/preedit_format:
     - xform/([nljqxy])v/$1ü/
   reverse_lookupcomment_format:
     - xform/([nljqxy])v/$1ü/
-  recognizer/patterns/+:
-      reverse_lookup: "U[a-z]*?$"
 
   # https://github.com/hchunhui/librime-lua
   # https://github.com/LufsX/rime/blob/master/lufs_flypy.schema.yaml
-  'engine/translators/@after 3':
-    lua_translator@date_translator
   # https://dvel.me/posts/make-rime-en-better
-  'engine/translators/@after 4':
-    table_translator@melt_eng
   melt_eng:
     dictionary: melt_eng
     enable_sentence: false
@@ -60,8 +51,6 @@ patch:
     initial_quality: 1.1
     comment_format:
       - xform/.*//
-  'engine/filters/@after 0':
-    lua_filters@reduce_english_filter
 
   traditionalize:
     option_name: traditionalization
@@ -72,9 +61,79 @@ patch:
     name: traditionalization
     reset: 1
     states: [ "繁", "简" ]
-  'engine/filters/@0':
-     'simplifier@traditionalize'
 
+  engine:
+    filters:
+      - "simplifier@emoji"
+      - "simplifier@traditionalize"
+      - uniquifier
+      - "lua_filters@reduce_english_filter"
+    processors:
+      - "lua_processor@select_character_processor"
+      - ascii_composer
+      - recognizer
+      - key_binder
+      - speller
+      - punctuator
+      - selector
+      - navigator
+      - express_editor
+    segmentors:
+      - ascii_segmentor
+      - matcher
+      - abc_segmentor
+      - punct_segmentor
+      - fallback_segmentor
+    translators:
+      - punct_translator
+      - script_translator
+      - "lua_translator@date_translator"
+      - "table_translator@melt_eng"
+      - reverse_lookup_translator
+
+  recognizer:
+    patterns:
+      email: "^[A-Za-z][-_.0-9A-Za-z]*@.*$"
+      reverse_lookup: "^U[a-z]+$"
+      # uppercase: "[A-Z][-_+.'0-9A-Za-z]*$"
+      url: "^(www[.]|https?:|ftp[.:]|mailto:|file:).*$|^[a-z]+[.].+$"
+
+  speller:
+    algebra:
+      - "erase/^xx$/"
+      - "derive/^([jqxy])u$/$1v/"
+      - "derive/^([aoe])([ioun])$/$1$1$2/"
+      - "xform/^([aoe])(ng)?$/$1$1$2/"
+      - "xform/iu$/Q/"
+      - "xform/(.)ei$/$1W/"
+      - "xform/uan$/R/"
+      - "xform/[uv]e$/T/"
+      - "xform/un$/Y/"
+      - "xform/^sh/U/"
+      - "xform/^ch/I/"
+      - "xform/^zh/V/"
+      - "xform/uo$/O/"
+      - "xform/ie$/P/"
+      - "xform/i?ong$/S/"
+      - "xform/ing$|uai$/K/"
+      - "xform/(.)ai$/$1D/"
+      - "xform/(.)en$/$1F/"
+      - "xform/(.)eng$/$1G/"
+      - "xform/[iu]ang$/L/"
+      - "xform/(.)ang$/$1H/"
+      - "xform/ian$/M/"
+      - "xform/(.)an$/$1J/"
+      - "xform/(.)ou$/$1Z/"
+      - "xform/[iu]a$/X/"
+      - "xform/iao$/N/"
+      - "xform/(.)ao$/$1C/"
+      - "xform/ui$/V/"
+      - "xform/in$/B/"
+      - "xlit/QWRTYUIOPSDFGHJKLZXCVBNM/qwrtyuiopsdfghjklzxcvbnm/"
+      - "abbrev/^(.).+$/$1/" # 首字母简拼
+    alphabet: zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA
+    delimiter: " '"
+      
   # 八股文
   grammar:
     language: zh-hant-t-essay-bgw
@@ -96,6 +155,8 @@ patch:
       "<" : "《"
       ">" : "》"
       "~" : "~"
+      "$" : "￥"
+      "%" : "％"
     half_shape:
       "/" : "、"
       "\\" : "、"
@@ -107,3 +168,5 @@ patch:
       "<" : "《"
       ">" : "》"
       "~" : "~"
+      "$" : "$"
+      "%" : "%"
