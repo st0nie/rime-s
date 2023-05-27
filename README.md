@@ -16,5 +16,5 @@ git clone https://github.com/st0nie/rime-s ~/.local/share/fcitx5/rime
 - lua插件，日期和时间输入支持
 - 符号可以直接上屏
 - emoji
-- easy_en 提供的英文输入支持
+- [rime-melt](https://github.com/tumuyan/rime-melt) 提供的英文输入支持
 - `-` `=` 以词定字
