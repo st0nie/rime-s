@@ -2,14 +2,9 @@
 name: rime_s
 version: "2022.06.05"
 sort: by_weight
-vocabulary: essay-zh-hans
-# use_preset_vocabulary: true
 import_tables:
   - cn_dicts/8105
   - cn_dicts/base
   - cn_dicts/ext
-  - cn_dicts/others
-  - cn_dicts/zhwiki
-  - cn_dicts/moegirl
-  - cn_dicts/sogou
   - cn_dicts/tencent
+  - cn_dicts/others
