@@ -156,6 +156,7 @@ patch:
       "~" : "~"
       "$" : "￥"
       "%" : "％"
+      "|" : "·"
     half_shape:
       "/" : "/"
       "\\" : "、"
@@ -169,6 +170,7 @@ patch:
       "~" : "~"
       "$" : "$"
       "%" : "%"
+      "|" : "·"
 
   ascii_composer:
     good_old_caps_lock: true
