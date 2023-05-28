@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 patch:
-  "switches/@0/reset": 1
+  "switches/@0/reset": 0
   "switches/@1/reset": 0
 
   translator/dictionary: rime_s
@@ -169,3 +169,13 @@ patch:
       "~" : "~"
       "$" : "$"
       "%" : "%"
+
+  ascii_composer:
+    good_old_caps_lock: true
+    switch_key:
+      Shift_L: noop
+      Shift_R: noop
+      Control_L: noop
+      Control_R: inline_ascii
+      Caps_Lock: clear
+      Eisu_toggle: clear
